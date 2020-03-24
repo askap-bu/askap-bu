@@ -1,0 +1,19 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+import time
+# Create your views here.
+
+def homePageView(request):
+    """respond to http request with a simple web page."""
+
+    response_html = """
+    <html> 
+    <h1> Hello, World!</h1>
+    <p>
+    This is our first web application!
+    </p>
+    <hr>
+    This page was generated at %s
+    </html>
+    """ % time.ctime()
+    return HttpResponse(response_html)
