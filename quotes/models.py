@@ -11,6 +11,6 @@ class Quote(models.Model):
     author = models.TextField(blank= True)
     image_url = models.URLField(blank=True)
 
-    def __repr__(self):
+    def __str__(self):
         """return  a string represenation of this object"""
         return ' "%s" - %s' % (self.text, self.author)

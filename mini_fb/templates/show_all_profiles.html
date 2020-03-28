@@ -1,0 +1,23 @@
+<!-- show_all_profiles.html -->
+
+<h1>Mini Facebook</h1>
+<h2> Showing All Profiles</h2>
+
+<table>
+
+    
+
+    <tr>
+        <th width="30%"> Name</th>
+        <th width="30%"> Hometown</th>
+        <th width="30%"> Image</th>
+    </tr>
+
+    {% for profile in show_all_profiles %}
+    <tr>
+        <td width="30%"> {{profile.fname}} {{profile.lname}}</td>
+        <td width="30%"> {{profile.city}}</td>
+        <td width="30%"><img src="{{profile.profile_image}}" style = "max-width:200;"></td>
+    </tr>
+    {% endfor %}
+<table></table>

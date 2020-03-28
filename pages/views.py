@@ -20,3 +20,4 @@ class SchedulePageView(TemplateView):
     """ A specialized version of templateview to display our about page"""
 
     template_name = "pages/schedule.html"
+
