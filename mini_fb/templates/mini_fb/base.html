@@ -1,0 +1,18 @@
+<!-- templates/mini_fb/base.html-->
+
+<html> 
+    <head>
+        <title> Mini Facebook </title>
+    </head>
+    
+    <body vlink="lightskyblue"> 
+    <header>
+        <a href ="{% url 'show_all_profiles' %}">Profile</a>
+    </header>  
+        {% block content %}
+        {% endblock %}
+       
+    </body>
+   
+</html>
+

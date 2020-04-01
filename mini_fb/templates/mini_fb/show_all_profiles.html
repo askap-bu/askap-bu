@@ -1,11 +1,12 @@
 <!-- show_all_profiles.html -->
 
-<h1>Mini Facebook</h1>
-<h2> Showing All Profiles</h2>
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+
+<h1 style="color:navy">Mini Facebook</h1>
+<h2 style="color:rgb(62, 148, 230)"> Showing All Profiles</h2>
 
 <table>
-
-    
 
     <tr>
         <th width="30%"> Name</th>
@@ -15,9 +16,10 @@
 
     {% for profile in show_all_profiles %}
     <tr>
-        <td width="30%"> {{profile.first_name}} {{profile.last_name}}</td>
+        <td width="30%"> <a href=" {% url 'profile' profile.pk %}"> {{profile.first_name}} {{profile.last_name}}</a></td>
         <td width="30%"> {{profile.city}}</td>
-        <td width="30%"><img src="{{profile.profile_image_url}}" style = "max-width:200;"></td>
+        <td width="30%"><a href=" {% url 'profile' profile.pk %}"> <img src="{{profile.profile_image_url}}" style = "max-width:200;"> </a></td>
     </tr>
     {% endfor %}
-<table></table>
+</table>
+{% endblock content %}

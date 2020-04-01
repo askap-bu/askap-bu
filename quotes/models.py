@@ -38,7 +38,7 @@ class Quote(models.Model):
 
     #data attributesof quote 
     text = models.TextField(blank=True)
-    person = models.ForeignKey('Person', on_delete='CASCADE')
+    person = models.ForeignKey('Person', on_delete=models.CASCADE)
 
     def __str__(self):
         """return  a string represenation of this object"""
@@ -47,7 +47,7 @@ class Quote(models.Model):
 class Image(models.Model):
     """represent an image that is a associated with a person"""
     image_url = models.URLField(blank=True)
-    person = models.ForeignKey('Person', on_delete='CASCADE')
+    person = models.ForeignKey('Person', on_delete=models.CASCADE)
  
     def __str__(self):
         """return  a string represenation of this object"""
