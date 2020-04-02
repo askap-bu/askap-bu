@@ -1,5 +1,6 @@
 <!-- templates/home.html-->
-
+{% extends 'quotes/base.html' %}
+{% block content %}
 
 <h1>Showing all quotes</h1>
 
@@ -12,3 +13,5 @@
     </li>
     {% endfor %}
 </ul>
+
+{% endblock%}

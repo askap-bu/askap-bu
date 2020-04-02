@@ -3,6 +3,8 @@ import random
 # Create your views here.
 from .models import Quote, Person
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView
+from .forms import CreateQuoteForm, UpdateQuoteForm
 
 class HomePageView(ListView):
     """ create a subclass of listview to display all quotes"""
@@ -39,3 +41,16 @@ class PersonPageView(DetailView):
     model= Person
     template_name = 'quotes/person.html'
     context_object_name = 'person'
+
+class CreateQuoteView(CreateView):
+    """ a view to create a new quote and save it ot the database"""
+
+    form_class= CreateQuoteForm
+    template_name = 'quotes/create_quote.html'
+
+class UpdateQuoteView(CreateView):
+    """ a view to update a quote and save it ot the database"""
+
+    form_class= UpdateQuoteForm
+    template_name = 'quotes/update_quote.html'
+    queryset = Quote.objects.all

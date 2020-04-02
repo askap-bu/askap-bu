@@ -1,6 +1,7 @@
 from django.db import models
+from django.urls import reverse
 import random
-
+ 
 # Create your models here.
 class Person(models.Model):
     """ encapsulates the co cept of  aperson, who said famous quote"""
@@ -43,6 +44,11 @@ class Quote(models.Model):
     def __str__(self):
         """return  a string represenation of this object"""
         return ' "%s" - %s' % (self.text, self.person.name)
+
+    def get_absolute_url(self):
+        '''return a url to display this quote object'''
+        return reverse("quote", kwargs={"pk": self.pk })
+
 
 class Image(models.Model):
     """represent an image that is a associated with a person"""
