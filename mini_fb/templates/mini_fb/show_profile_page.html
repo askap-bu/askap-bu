@@ -1,27 +1,42 @@
 <!-- templates/mini_fb/show_profile_page.html-->
+
+
+
 {% extends 'mini_fb/base.html' %}
 {% block content %}
-
 
 <h1>{{profile.first_name}} {{profile.last_name}}</h1>
 
 
 
 <img src="{{profile.profile_image_url}}" style= "max-width: 500;"><br>
-{{profile.email_address}}<br>
-{{profile.city}}
 
+<table>
+    <tr>
+        <th> Email</th>
+        <td>{{profile.email_address}}</td>
+    </tr>
+    <tr>
+        <th> Hometown</th>
+        <td>{{profile.city}}</td>
+    </tr>
+    <tr>
+        <th> Birth Date</th>
+        <td>{{profile.birth_date}}</td>
+    </tr>
 
-<!--{{profile.get_status_messages}}-->
-
+</table>
+<br>
+<a href ="{% url 'update_profile' profile.pk %}" > Update this Profile</a>
+<!--Show Status Message code-->
 
 <h2>Status Messages</h2>
+
 <table>
     <tr>
         <th> Time</th>
         <th> Message</th>
     </tr>
-    
     
     {% for status in profile.get_status_messages %}
         <tr>
@@ -32,4 +47,28 @@
     {% endfor %}
 </table>
 
-{% endblock content %}
+
+
+    
+
+
+<!--create_status_form-->
+<h2> Post a Status Message</h2>
+<form method ='POST' action = "{% url 'post_status' profile.pk %}">
+    {% csrf_token %}
+        <table>
+        {% for field in create_status_form %}
+        <tr>
+            <th>{{field.name}}</th>
+            <td><textarea name ="message" rows=8 cols=60></textarea></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name = "Share" value="Share">
+            </td>
+        </tr>
+        </table>
+    </form>
+{% endblock %}

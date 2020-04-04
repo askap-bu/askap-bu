@@ -53,4 +53,4 @@ class UpdateQuoteView(CreateView):
 
     form_class= UpdateQuoteForm
     template_name = 'quotes/update_quote.html'
-    queryset = Quote.objects.all
+    queryset = Quote.objects.all()
