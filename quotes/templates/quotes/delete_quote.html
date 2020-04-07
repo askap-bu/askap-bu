@@ -1,0 +1,22 @@
+<!-- templates/delete_quote.html-->
+{% extends 'quotes/base.html' %}
+{% block content %}
+
+<h3> Are you sure that you want to delete this quote?</h3>
+
+{{quote}}
+
+<p>
+
+</p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <input type = 'submit' name = "yes" value="yes">
+</form>
+<form method='GET' action="{% url 'quote' quote.pk %}">
+    {% csrf_token %}
+    <input type = 'submit' name = "no" value="no">
+</form>
+
+{% endblock %}
