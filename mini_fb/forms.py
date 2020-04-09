@@ -30,8 +30,9 @@ class UpdateProfileForm(forms.ModelForm):
 
 class CreateStatusMessageForm(forms.ModelForm):
     ''' creates a message form'''
+    image= forms.ImageField(required=False)
 
     class Meta:
         '''associate this form with the StatusMessage model'''
         model = StatusMessage 
-        fields =['message', ]
+        fields =['message', 'image']

@@ -1,0 +1,25 @@
+<!-- templates/delete_status.html-->
+
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+
+<h3> Are you sure that you want to delete this status?</h3>
+
+{{status.message}}
+{% if status.image %}
+    <img src="{{status.image.url}}" style = "max-width:200;"> 
+{% endif %}
+<p>
+
+</p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <input type = 'submit' name = "yes" value="yes">
+</form>
+<form method='GET' action="{% url 'profile' statusmessage.profile.pk %}">
+    {% csrf_token %}
+    <input type = 'submit' name = "no" value="no">
+</form>
+
+{% endblock %}
