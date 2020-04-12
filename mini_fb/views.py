@@ -113,3 +113,32 @@ class DeleteStatusMessageView(DeleteView):
         # find the person asspciated with the status 
         profile = status.profile 
         return reverse('profile', kwargs={'pk':profile.pk}) 
+
+
+class ShowNewsFeedView(DetailView):
+    """ shows the news feed"""
+    template_name= 'mini_fb/show_news_feed.html'
+    model = Profile
+    context_object_name= 'profile'
+    queryset=Profile.objects.all().order_by('-timestamp')
+
+
+    def get_object(self):
+        profile_pk = self.kwargs['profile_pk']
+        
+        #newsfeed=StatusMessage.objects.all().order_by('-timestamp')
+        newsfeed= Profile.objects.get(pk=profile_pk)
+        return newsfeed
+
+class ShowPossibleFriendsView(DetailView):
+    '''create a view to show possible friends'''
+    model = Profile 
+    template_name= 'mini_fb/show_possible_friends.html'
+
+def add_friend(request, profile_pk, friend_pk):
+    '''process th add_friend request, to add a friend for a given profile'''
+    friend= Profile.objects.get(pk=profile_pk)
+    pfriend= Profile.objects.get(pk=friend_pk)
+    friend.friends.add(pfriend)
+    friend.save()
+    return redirect(reverse('profile', kwargs={'pk':profile_pk}))

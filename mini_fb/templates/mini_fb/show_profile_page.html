@@ -27,7 +27,40 @@
 
 </table>
 <br>
-<a href ="{% url 'update_profile' profile.pk %}" > Update this Profile</a>
+
+
+<table>
+    <tr>
+        <td><a href ="{% url 'update_profile' profile.pk %}" > Update this Profile |</a></td>
+        <td><a href="{% url 'news_feed' profile.pk %}"> View News Feed |</a></td>
+        <td><a href= "{% url 'show_possible_friends' profile.pk %}"> Find Friends</a>  </td>
+    </tr>
+</table>
+<hr>
+
+<!-- Show Friends -->
+<h2> Friends of {{profile.first_name}}</h2>
+
+{% if profile.get_friends %} <!--fix this loop-->
+    {% for friend in profile.get_friends %}
+        <table>
+            <tr>
+                <td><a href=" {% url 'profile' friend.pk %}">{{friend.first_name}} {{friend.last_name}}</a></td>
+            </tr>
+            <tr>   
+                <td><a href=" {% url 'profile' friend.pk %}"> <img src="{{friend.profile_image_url}}" style= "max-width: 100;"></td>
+
+            </tr>
+       
+    {% endfor %}
+{% else %}
+{{profile.first_name}} doesn't have any friends.
+{% endif %}
+</table>
+
+<hr>
+
+
 <!--Show Status Message code-->
 
 <h2>Status Messages</h2>
@@ -50,10 +83,7 @@
     {% endfor %}
 </table>
 
-
-
-    
-
+<hr>
 
 <!--create_status_form-->
 <h2> Post a Status Message</h2>

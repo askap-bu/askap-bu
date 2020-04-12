@@ -14,7 +14,27 @@ class Profile(models.Model):
     email_address = models.TextField(blank= True)
     profile_image_url = models.URLField(blank=True)
     birth_date = models.DateField(blank=False)
-    
+    friends = models.ManyToManyField("self")
+
+    def get_friends(self):
+        """ will return a qset of all friends fro this profile"""
+        friend= self.friends.exclude(pk=self.pk)
+        return friend
+
+    def get_news_feed(self):
+        friends= self.get_friends()
+        """obtain and return news feed items"""
+        #newsfeed = StatusMessage.objects.all().order_by("-timestamp") #should i made that Profile instead
+        newsfeed = StatusMessage.objects.filter(profile__in=self.get_friends()).order_by("-timestamp")
+        return newsfeed
+
+
+    def get_friend_suggestions(self):
+        """obtain and return a qset of all profile that could be added as friends"""
+        friends= self.get_friends()
+        possible_friends = Profile.objects.all().exclude(pk__in=self.get_friends()).exclude(pk=self.pk)
+        return possible_friends
+
 
     def __str__(self):
         """return  a string represenation of this object"""
