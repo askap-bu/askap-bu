@@ -1,0 +1,35 @@
+{% extends 'dance_site/base.html' %}
+{% block content %}
+
+
+
+
+<h1 align="center">Dance Website</h1>
+<h2  align="center"> <a href = "{% url 'create_class' %}"> Create a Class </a></h2>
+
+    
+<hr>
+<table class="my-table">
+
+    <tr>
+        <th width="20%"> </th>
+        <th width="20%"> Class</th>
+        <th width="20%"> Day</th>
+        <th width="20%"> Teacher</th>
+        <th width="20%"> Price</th>
+
+    </tr>
+
+    {% for class in show_all_classes %}
+    <tr class="my-style">
+        <td width="20%" align="center"><img src="{{class.class_picture}}" style = "max-width:200;"></td>
+        <td width="20%" align="center">  {{class.class_name}}</a></td>
+        <td width="20%" align="center"> {{class.day}}</td>
+        <td width="20%" align="center"> <a href=" {% url 'teacher' class.teacher.pk %}">{{class.teacher}}</td>
+        <td width="20%" align="center"> {{class.price}}</td>
+        <td><a href="{% url 'delete_class' class.pk%}">Delete</a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

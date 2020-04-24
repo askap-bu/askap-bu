@@ -1,0 +1,59 @@
+<!-- templates/dance_site/student_page.html-->
+
+
+
+{% extends 'dance_site/base.html' %}
+{% block content %}
+
+
+<p style="text-align:center;"> <a href ="{% url 'show_all_students'  %}" > Return to all students list </a> </p>
+<h1 align="center">{{student.first_name}} {{student.last_name}}</h1> 
+<br>
+
+<p style="text-align:center;"><img src="{{student.profile_image_url}}" style= "max-height:400 ;"></p>
+<p style="text-align:center;"><a href ="{% url 'update_student' student.pk %}" > Update this Student</a></p>
+<br>
+
+</tr>
+<table align="center">
+    
+    <tr>
+        <th> Email</th>
+        <td>{{student.email_address}}</td>
+    </tr>
+    <tr>
+        <th> Hometown</th>
+        <td>{{student.city}}</td>
+    </tr>
+    <tr>
+        <th> Birth Date</th>
+        <td>{{student.birth_date}}</td>
+    </tr>
+
+
+</table>
+<br>
+
+<!-- display classes the student is taking -->
+<hr>
+<h2  align="center">Dance Classes Entrolled In</h2>
+<br>
+<table align="center">
+    <tr>
+        <th> Class Name</th>
+        <th> Day</th>
+    </tr>
+    
+    {% for class in student.get_classes %}
+        <tr>
+            <td align="center">{{class.class_name}}</td>
+            <td align="center">{{class.day}}</td>
+            <td>{% if status.image %}
+                <img src='{{class.class_picture.url}}' style='max-width: 200;'>
+                {% endif %}</td>
+        </tr>
+    {% endfor %}
+</table>
+<p align="center"> <a href= "{% url 'show_possible_classes' student.pk %}"> Add a Class</a> </p>
+
+{% endblock %}

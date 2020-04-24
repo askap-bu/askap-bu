@@ -1,0 +1,56 @@
+<!-- templates/dance_site/teacher_page.html-->
+
+
+
+{% extends 'dance_site/base.html' %}
+{% block content %}
+
+
+
+<h1 align="center">{{teacher.first_name}} {{teacher.last_name}}</h1> 
+<br>
+<p style="text-align:center;"><img src="{{teacher.profile_image_url}}" style= "max-height:400 ;"></p>
+<br>
+
+</tr>
+<table align="center">
+    
+    <tr>
+        <th> Email</th>
+        <td>{{teacher.email_address}}</td>
+    </tr>
+    <tr>
+        <th> Hometown</th>
+        <td>{{teacher.city}}</td>
+    </tr>
+    <tr>
+        <th> Birth Date</th>
+        <td>{{teacher.birth_date}}</td>
+    </tr>
+
+
+</table>
+
+
+<!-- display classes the student is taking -->
+<h2  align="center">Dance Classes Taught</h2>
+
+<table align="center">
+    <tr>
+        <th> Class Name</th>
+        <th> Day</th>
+    </tr>
+    
+    {% for class in teacher.get_classes %}
+        <tr>
+            <td align="center">{{class.class_name}}</td>
+            <td align="center">{{class.day}}</td>
+            <td>{% if status.image %}
+                <img src='{{class.class_picture.url}}' style='max-width: 200;'>
+                {% endif %}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

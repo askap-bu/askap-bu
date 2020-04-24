@@ -1,0 +1,26 @@
+<!--templates/dance_site/create_class_form.html-->
+
+{% extends 'dance_site/base.html' %}
+{% block content %}
+
+<h1 align="Center"> New Class Form</h1>
+
+
+<form method ='POST' >
+{% csrf_token %}
+    <table align="center">
+    {% for field in form %}
+    <tr>
+        <th>{{field.name}}</th>
+        <td>{{field}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" name = "Create Class!" value="Create Class">
+        </td>
+    </tr>
+    </table>
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- show_all_students.html -->
+
+{% extends 'dance_site/base.html' %}
+{% block content %}
+
+
+
+
+<h1  align="center">Our Students</h1>
+
+<table align="center" class="my-table">
+
+    <tr>
+        <th > Name</th>
+        <th > Hometown</th>
+        <th > Image</th>
+    </tr>
+
+    {% for student in show_all_students %}
+    <tr class="my-style">
+        <td > <a href=" {% url 'student' student.pk %}"> {{student.first_name}} {{student.last_name}}</a></td>
+        <td > {{student.city}}</td>
+        <td ><a href=" {% url 'student' student.pk %}"> <img src="{{student.profile_image_url}}" style = "max-height:200;"> </a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

@@ -1,0 +1,33 @@
+<!-- show_all_teachers.html -->
+
+{% extends 'dance_site/base.html' %}
+{% block content %}
+
+
+
+
+<h1 align="center">Our Teachers</h1>
+<br>
+<table align="center" class="my-table">
+
+    <tr>
+        <th > Name</th>
+        <th > Image</th>
+        <th> Classes Taught</th>
+    </tr>
+
+    {% for teacher in show_all_teachers %}
+    <tr class="my-style">
+        <td > <a href=" {% url 'teacher' teacher.pk %}">{{teacher.first_name}} {{teacher.last_name}}</a></td>
+        <td > <a href=" {% url 'teacher' teacher.pk %}"><img src="{{teacher.profile_image_url}}" style = "max-width:200 "> </a></td>
+
+        <td>{% for class in teacher.get_classes %}
+            {{class.class_name}} <br>
+        
+        {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}
