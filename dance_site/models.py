@@ -36,7 +36,45 @@ class Student(models.Model):
         class_s= self.get_classes()
         possible_classes = Class.objects.all().exclude(pk__in=self.get_classes()).exclude(pk=self.pk)
         return possible_classes
+
+    def get_rows(self):
+        """get the number rows i need to display"""
+        count= len(Student.objects.all())
+        rows= count//3
+        if count%3==0:
+            rows=count//3
+            rows=[1 for x in range(rows)]
+        else:
+            rows= count//3+1
+            rows=[1 for x in range(rows)]
+        return rows
     
+    def get_cols(self):
+        """get the number cols i need to display"""
+        cols=[0,1,2]
+        return cols
+        
+    def list_of_lists(self):
+        """create a sublist for  all the students"""
+        list_tot=[]
+        list_int=[]
+        count = 0 
+        for p in people:
+            people=list(Student.objects.all())
+            if len(list_int) < 3:
+                list_int.append(p)
+                if len(list_int) == 3:
+                    list_tot.append(list_int)
+                    list_int=[]
+                if people[count]==people[(len(people)-1)]:# there are no more people, append              
+                    list_tot.append(list_int)
+                count += 1
+            return list_tot    
+
+
+
+        
+
 
 class Teacher(models.Model):
     '''holds the data attributes of a dance teacher'''
@@ -56,7 +94,7 @@ class Teacher(models.Model):
         return teaches
 
     def __str__(self):
-        """return  a string represenation of this object"""
+        """return a string represenation of this object"""
         return  '%s, %s' %(self.first_name, self.last_name)
 
 class Class(models.Model): 

@@ -2,10 +2,40 @@
 {% block content %}
 
 
+<style>
+    body {
+      background-image: url('https://www.raquellesdance.com/img/background.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+   
+    .floating {
+    height: 250px;
+    float: left;
+    vertical-align: middle;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: center;
+    background-color:white ;
+    }  
+    .homepage { 
+    background-color: white;
+    margin-right:10%;
+    margin-left:10%;
+    }
+</style>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="homepage">
+<br>
 <h1 align="center">Welcome to Dreams of Dance </h1>
-<h2  align="center"> Explore Classes, Students, and Teachers</h2>
+<h2 align="center"> Explore Classes, Students, and Teachers</h2>
 <br>
 
 <table align="center">
@@ -18,20 +48,16 @@
         <td width="30%" align="center"><a href ="{% url 'show_all_classes' %}"> <img src="https://grballet.com/wp-content/uploads/IMG_6756-edit.jpg" style = "max-width:400 "></td>
         <td width="30%" align="center"><a href = "{% url 'show_all_students'  %}"> <img src="https://cfa.fsu.edu/wp-content/uploads/2016/10/Stars-and-Stripes-Cast-without-Suzanne.jpg" style = "max-width:400;"></td>
         <td width ="30%" align ="center"> <a href = "{% url 'show_all_teachers'  %}"><img src="https://www.tututix.com/wp-content/uploads/consider-these-common-mistakes-all-new-dance-teachers-make-and-how-to-av_1798_40092671_0_14116046_500-640x427.jpg" style="max-width:400"></td>
-    </tr>
+
 </table>
 
-<br>
+    <div class="floating">
 <h2 align="center">About Us</h1>
-<table>
-    <tr>
-        <td width="25%" align="center"> </th>
-        <td width="50%" align="center"><p width="800px" align="center"> Dreams of Dance Studio is a family friendly dance studio offering classes for ages 1.5 through Adults, with competitive and non-competitive programs. Our pre-school program is our most popular and fastest growing program designed to provide a safe, fun and nurturing environment for our youngest dancers to express themselves through movement while building a solid foundation for their dance education.
-            Our staff have extensive dance training to provide our students with a quality dance education. All of our staff stay current with choreography and class offerings by attending some of the best workshops dance has to offer several times a year. </p>
-         </th>
-        <td width="25%" align="center"></th>
-    </tr>
-</table>
+    
+        Dreams of Dance Studio is a family friendly dance studio offering classes for ages 1.5 through Adults, with competitive and non-competitive programs. Our pre-school program is our most popular and fastest growing program designed to provide a safe, fun and nurturing environment for our youngest dancers to express themselves through movement while building a solid foundation for their dance education.
+        Our staff have extensive dance training to provide our students with a quality dance education. All of our staff stay current with choreography and class offerings by attending some of the best workshops dance has to offer several times a year. 
+    </div>
 
+</div>
 
 {% endblock %}

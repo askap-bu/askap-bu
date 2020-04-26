@@ -1,0 +1,51 @@
+
+
+
+<style type="text/css">
+    .card {
+        max-width: 700px;
+    }
+    .card-body{
+        padding: 20px;
+        width: 100%;
+    }
+    .card-title{
+        font-family: Optima;
+        font-size: 175%;
+    }
+    .card-text{
+        font-family: Optima;
+    }
+    
+</style>
+
+{% if all_profiles_list %}
+<div class="container">
+    <div class="row">
+        <div class="card m-auto">
+            <div class="card-body mt-2 mb-2">
+                    <h2 class="card-title">{{show_all_clases.class_name}} {{show_all_classes.class_day}} {{show_all_classes.teacher}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="card m-auto">
+            <div class="card-body mt-2 mb-2">
+                <h4 align="center" class="card-title">
+                    No results
+                </h4>
+                <p align="center" class="card-text">
+                    There were no results matching your search: {{query}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+

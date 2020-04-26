@@ -3,34 +3,58 @@
 <html> 
     <head>
         <title> Dance Website </title>
-        <link rel="stylesheet" type="text/css" href="http://cs-people.bu.edu/askap/the-real-wedding/css/style.css">
         <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
 <style>
 body {
-    font-family: 'Didact Gothic';
-    background-color:seashell;
+    font-family: 'Optima';
+    background-color:white;
 }
 h1 {
-    font-family: 'Merienda';
+    font-family: 'Optima';
     font-size:40px;
-    color:teal
+    color:hotpink
 }
 h2{
-    font-family: 'Merienda';
+    font-family: 'Optima';
     font-size:25px;
-    color:skyblue
+    color:hotpink;
 }
 
-li{
-    font-family: 'Merienda';
-    font-size: 24px; 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    font-family: 'Optima';
+    font-size: 24px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
 }
 a:hover{
-    color:skyblue
+    color:hotpink
+}
+a{
+    color:black
 }
 tr:nth-child(even).my-style {
-    background-color:mistyrose;
+    background-color:rgb(255, 225, 240);
 }
 table.my-table {
   width: 100%;
@@ -38,7 +62,15 @@ table.my-table {
 td {
   text-align: center;
   font-size: 18px;
+  
 }
+td.ind-pages{
+  text-align: left;
+  font-size: 18px;
+  padding-right:4%;
+}
+
+
 th {
   text-align: center;
   font-size: 20px;
@@ -49,19 +81,24 @@ img {
   width:200px;
   height:200px;
 }
+
 </style>
 
     </head> 
     
-    <body link="hotpink">
+    <body >
         <header align="left" > <!--add color later -->
-            <ul>
-                <li><a href = "{% url 'home'  %}"> Home •</a></li>
-                <li> <a href ="{% url 'show_all_classes' %}">Classes • </a> </li>
-                <li ><a href = "{% url 'show_all_teachers' %}"> Teachers • </a></li>
-                <li ><a href = "{% url 'show_all_students'  %}"> Students •</a></li>
+        
+        <ul>
+            <li><a href = "{% url 'home'  %}"> Home </a></li>
+            <li> <a href ="{% url 'show_all_classes' %}">Classes  </a> </li>
+            <li ><a href = "{% url 'show_all_teachers' %}"> Teachers  </a></li>
+            <li ><a href = "{% url 'show_all_students'  %}"> Students </a></li>
+        </ul>
+    
+
+
             
-            </ul>
         
         
         

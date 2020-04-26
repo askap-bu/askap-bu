@@ -1,11 +1,10 @@
 from django.urls import path
-from .views import ShowAllClassesView, CreateClassView,StudentPageView,ShowAllStudentsView,UpdateStudentView, ShowHomeView, ShowAllTeachersView, TeacherPageView, DeleteClassView,ShowPossibleClassesView,add_class
-
+from .views import * 
 urlpatterns = [
     path('', ShowHomeView.as_view(), name='home'),
     path('students', ShowAllStudentsView.as_view(), name='show_all_students'),
     path('teachers', ShowAllTeachersView.as_view(), name='show_all_teachers'),
-    path('classes', ShowAllClassesView.as_view(), name='show_all_classes'),
+    path('classes', AllClassView, name='show_all_classes'),
     path('create', CreateClassView.as_view(), name ='create_class'),
     path('class/<int:pk>/delete', DeleteClassView.as_view(), name ='delete_class'),
     path('student/<int:pk>', StudentPageView.as_view(), name='student'),

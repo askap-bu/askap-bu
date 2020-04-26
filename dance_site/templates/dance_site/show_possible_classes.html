@@ -3,19 +3,20 @@
 {% extends 'dance_site/base.html' %}
 {% block content %}
 
+<br>
+<a href= "{% url 'student' student.pk %}"> Go back to Student Page</a>
 
-{% comment %} <a href= "{% url 'student' student.pk %}"> Go back to Student Page</a>
-{% endcomment %}
+<br>
+<h1 align="center"> Class Suggestions </h1>
 
-<h2> Class Suggestions </h2>
+<hr>
 
-
-<table>
+<table align="center">
     {% for suggestion in student.get_class_suggestions %}
         <tr>
-            <td> {{suggestion.class_name}}</td>
-            <td><img src='{{suggestion.class_picture}}' style='max-width:200;'></td>
-            <td>
+            <td width="30%"> {{suggestion.class_name}}</td>
+            <td width="30%"><img src='{{suggestion.class_picture}}' style='max-width:200;'></td>
+            <td width="30%">
                 <form method="POST" action="{% url 'add_class' student_pk=student.pk class_pk=suggestion.pk %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="submit" name= 'Add Class' value = 'Add Class'> 

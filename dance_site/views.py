@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import redirect
 from django.urls import reverse
 from .forms import CreateClassForm, UpdateStudentForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -21,6 +22,32 @@ class ShowAllClassesView(ListView):
     model = Class
     template_name = 'dance_site/show_all_classes.html'
     context_object_name = 'show_all_classes'
+    
+    
+def AllClassView(request):
+    """view for a list of all classes"""
+    context={}
+    query=""
+    if request.GET:
+        query=request.GET['q']
+        context['query']=str(query)
+    show_all_classes = get_search_queryset(query)   
+    context['show_all_classes'] = show_all_classes
+    return render(request, 'dance_site/show_all_classes.html', context)
+
+
+def get_search_queryset(query=None):
+    queryset=[]
+    queries = query.split(" ")
+    for q in queries:
+        classes= Class.objects.filter((Q(class_name__icontains=q) | Q(day__icontains=q))).distinct()
+        for c in classes:
+            queryset.append(c)
+    return list(set(queryset))
+
+
+    
+    
 
 class DeleteClassView(DeleteView):
     """ a view to delete a class """
@@ -56,6 +83,9 @@ class ShowPossibleClassesView(DetailView):
     model=Student
     template_name='dance_site/show_possible_classes.html'
     context_object_name='student'
+    query = ""
+    
+
 
 def add_class(request, student_pk, class_pk):
     '''process add_class request to add a class for a given student'''
@@ -64,6 +94,9 @@ def add_class(request, student_pk, class_pk):
     student.classes_taken.add(addclass)
     student.save()
     return redirect(reverse('student', kwargs={'pk':student_pk}))
+
+
+
 
     
 class UpdateStudentView(UpdateView):
@@ -97,3 +130,5 @@ class TeacherPageView(DetailView):
         ''' Return a dictionary with context data for this template to use'''
         context = super(TeacherPageView,self).get_context_data(**kwargs)
         return context 
+
+

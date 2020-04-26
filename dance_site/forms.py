@@ -30,5 +30,4 @@ class UpdateStudentForm(forms.ModelForm):
 
 
 
-       
-    
+

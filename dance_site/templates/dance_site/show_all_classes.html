@@ -3,20 +3,35 @@
 
 
 
+<br>
+<h1 align="center">Classes</h1>
 
-<h1 align="center">Dance Website</h1>
-<h2  align="center"> <a href = "{% url 'create_class' %}"> Create a Class </a></h2>
 
-    
-<hr>
+<p  align="center"> <a href = "{% url 'create_class' %}"> Create a Class </a></p> 
+
+
+
+<div align="center" class="search-bar mt-sm-2 mr-2">
+    <form method="GET">
+    <input type="text" class="form-control" name="q" id="id_q" placeholder="Search for a class..."> 
+    </form> 
+</div>  
+
+<script type="text/javascript">
+    document.getElementById("id_q")
+</script>
+     
+
+
+{% if show_all_classes %}
 <table class="my-table">
 
     <tr>
         <th width="20%"> </th>
-        <th width="20%"> Class</th>
-        <th width="20%"> Day</th>
-        <th width="20%"> Teacher</th>
-        <th width="20%"> Price</th>
+        <th  width="20%"> Class</a></th>
+        <th  width="20%"> Day</th>
+        <th  width="20%"> Teacher</th>
+        <th  width="20%"> Price</th>
 
     </tr>
 
@@ -32,4 +47,11 @@
     </tr>
     {% endfor %}
 </table>
-{% endblock content %}
+
+{% else %}
+    <div class="container">
+        {% include 'dance_site/search.html' with query=query %}
+    </div>
+{% endif %}
+
+{% endblock %}
