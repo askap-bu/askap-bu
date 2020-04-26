@@ -42,9 +42,7 @@ INSTALLED_APPS = [
     'quotes.apps.QuotesConfig',
     'mini_fb.apps.MiniFbConfig',
     'dance_site.apps.DanceSiteConfig',
-    'django_q',
-    'columns',
-    'sortable_column',
+    
 
 ]
 
