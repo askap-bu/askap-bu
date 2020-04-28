@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 django = "==2.2.7"
 gunicorn = "*"
+django-columns = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,3 +1,9 @@
+<!-- File name:templates/home.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page to display the homepage of the site-->
+
+
+
 {% extends 'dance_site/base.html' %}
 {% block content %}
 
@@ -32,27 +38,31 @@
 <br>
 <br>
 <br>
+
+
+ <!-- A homepage with a table to display the three main elements of this webpage -->
+
 <div class="homepage">
 <br>
-<h1 align="center">Welcome to Dreams of Dance </h1>
-<h2 align="center"> Explore Classes, Students, and Teachers</h2>
+<h1 >Welcome to Dreams of Dance </h1>
+<h2 > Explore Classes, Students, and Teachers</h2>
 <br>
 
 <table align="center">
     <tr>
         <th width="30%"> Classes</th>
-        <th width="30%"> Students</th>
+        <th width="30%"> Students</th>  
         <th width="30%">Teachers</th>
     </tr>
     <tr>
-        <td width="30%" align="center"><a href ="{% url 'show_all_classes' %}"> <img src="https://grballet.com/wp-content/uploads/IMG_6756-edit.jpg" style = "max-width:400 "></td>
-        <td width="30%" align="center"><a href = "{% url 'show_all_students'  %}"> <img src="https://cfa.fsu.edu/wp-content/uploads/2016/10/Stars-and-Stripes-Cast-without-Suzanne.jpg" style = "max-width:400;"></td>
-        <td width ="30%" align ="center"> <a href = "{% url 'show_all_teachers'  %}"><img src="https://www.tututix.com/wp-content/uploads/consider-these-common-mistakes-all-new-dance-teachers-make-and-how-to-av_1798_40092671_0_14116046_500-640x427.jpg" style="max-width:400"></td>
+        <td width="30%" ><a href ="{% url 'show_all_classes' %}"> <img src="https://grballet.com/wp-content/uploads/IMG_6756-edit.jpg" style = "max-width:400 "></td>
+        <td width="30%" ><a href = "{% url 'show_all_students'  %}"> <img src="https://cfa.fsu.edu/wp-content/uploads/2016/10/Stars-and-Stripes-Cast-without-Suzanne.jpg" style = "max-width:400;"></td>
+        <td width ="30%" > <a href = "{% url 'show_all_teachers'  %}"><img src="https://www.tututix.com/wp-content/uploads/consider-these-common-mistakes-all-new-dance-teachers-make-and-how-to-av_1798_40092671_0_14116046_500-640x427.jpg" style="max-width:400"></td>
 
 </table>
 
     <div class="floating">
-<h2 align="center">About Us</h1>
+        <h2 >About Us</h2>
     
         Dreams of Dance Studio is a family friendly dance studio offering classes for ages 1.5 through Adults, with competitive and non-competitive programs. Our pre-school program is our most popular and fastest growing program designed to provide a safe, fun and nurturing environment for our youngest dancers to express themselves through movement while building a solid foundation for their dance education.
         Our staff have extensive dance training to provide our students with a quality dance education. All of our staff stay current with choreography and class offerings by attending some of the best workshops dance has to offer several times a year. 

@@ -1,4 +1,6 @@
-<!-- templates/dance_site/update_student.html-->
+<!-- File name: templates/show_all_classes.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page to show form to update student information-->
 
 
 {% extends 'dance_site/base.html' %}
@@ -6,10 +8,10 @@
 
 <h2> Update Student</h2>
 
-<form method ='POST'>
+<form  method ='POST'>
 {% csrf_token %}
     
-    <table>
+    <table align="center">
     {% for field in form %}
     <tr>
         <th>{{field.name}}</th>

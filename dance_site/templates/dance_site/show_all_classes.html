@@ -1,16 +1,20 @@
+<!-- File name: templates/show_all_classes.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page to show a listing of all the classes. Contains a search bar too-->
+
+
 {% extends 'dance_site/base.html' %}
 {% block content %}
 
 
-
 <br>
-<h1 align="center">Classes</h1>
+<h1 >Classes</h1>
 
-
+<!-- link to create a class form and page -->
 <p  align="center"> <a href = "{% url 'create_class' %}"> Create a Class </a></p> 
 
 
-
+<!-- search bar code -->
 <div align="center" class="search-bar mt-sm-2 mr-2">
     <form method="GET">
     <input type="text" class="form-control" name="q" id="id_q" placeholder="Search for a class..."> 
@@ -22,7 +26,7 @@
 </script>
      
 
-
+<!-- A table to display all the classes-->
 {% if show_all_classes %}
 <table class="my-table">
 
@@ -49,6 +53,8 @@
 </table>
 
 {% else %}
+
+<!-- code to connect the search template resutls with this page -->
     <div class="container">
         {% include 'dance_site/search.html' with query=query %}
     </div>

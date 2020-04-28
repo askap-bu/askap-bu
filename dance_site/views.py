@@ -1,3 +1,8 @@
+# File name: models.py 
+# Author: Andriana Skaperdas (askap@bu.edu)
+# Description: Holds all the views for /dance_site
+
+
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, DeleteView
 from .models import Student, Class, Teacher
@@ -10,7 +15,7 @@ from django.db.models import Q
 # Create your views here.
 
 class ShowHomeView(ListView):
-    """view for a list of all classes"""
+    """view for the homepage"""
     model = Student
     template_name = 'dance_site/home.html'
     context_object_name = 'home'
@@ -37,6 +42,7 @@ def AllClassView(request):
 
 
 def get_search_queryset(query=None):
+    """ function to get a queryset for a class"""
     queryset=[]
     queries = query.split(" ")
     for q in queries:
@@ -46,16 +52,13 @@ def get_search_queryset(query=None):
     return list(set(queryset))
 
 
-    
-    
-
 class DeleteClassView(DeleteView):
     """ a view to delete a class """
     template_name = 'dance_site/delete_class.html'
     queryset = Class.objects.all()
 
     def get_success_url(self):
-        """return to the urls which we shoudl be directed to on delete"""
+        """return to the urls which we should be directed to on delete"""
         pk = self.kwargs.get('pk')
         classd= Class.objects.filter(pk=pk)
         return reverse('show_all_classes') 
@@ -63,14 +66,20 @@ class DeleteClassView(DeleteView):
 class CreateClassView(CreateView):
     ''' subclass of createview to display form to make a class'''
     form_class= CreateClassForm
-    template_name='dance_site/create_class_form.html'
+    template_name='dance_site/create_class_form.html' 
 
+    def get_success_url(self):
+        """return to the urls which we shoudl be directed to on delete"""
+        pk = self.kwargs.get('pk')
+        classd= Class.objects.filter(pk=pk)
+        return reverse('show_all_classes') 
 
 
 
 #views related to Student
+
 class StudentPageView(DetailView):
-    """show all quotes and all images for one person"""
+    """show all information for one person"""
     model= Student
     template_name = 'dance_site/student_page.html'
     
@@ -80,12 +89,11 @@ class StudentPageView(DetailView):
         return context #could be meaningless
 
 class ShowPossibleClassesView(DetailView):
+    """ show all the classes a student can add to thier enrollment list"""
     model=Student
     template_name='dance_site/show_possible_classes.html'
     context_object_name='student'
     query = ""
-    
-
 
 def add_class(request, student_pk, class_pk):
     '''process add_class request to add a class for a given student'''
@@ -95,19 +103,14 @@ def add_class(request, student_pk, class_pk):
     student.save()
     return redirect(reverse('student', kwargs={'pk':student_pk}))
 
-
-
-
-    
 class UpdateStudentView(UpdateView):
+    """ show the page and form to update a student's information"""
     form_class= UpdateStudentForm
     template_name = 'dance_site/update_student.html'
     queryset = Student.objects.all()
 
-
 class ShowAllStudentsView(ListView):
     """ create a subclass of listview to display all students"""
-
     model= Student 
     template_name= 'dance_site/show_all_students.html'
     context_object_name = 'show_all_students'
@@ -116,13 +119,12 @@ class ShowAllStudentsView(ListView):
 #Views related to Teacher
 class ShowAllTeachersView(ListView):
     """ create a subclass of listview to display all teachers"""
-
     model= Teacher
     template_name= 'dance_site/show_all_teachers.html'
     context_object_name = 'show_all_teachers'
 
 class TeacherPageView(DetailView):
-    """show all quotes and all images for one person"""
+    """show all informtation for one teacher """
     model= Teacher
     template_name = 'dance_site/teacher_page.html'
     

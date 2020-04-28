@@ -1,10 +1,12 @@
-<!-- templates/dance_site/teacher_page.html-->
-
+<!-- File name: templates/show_all_classes.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page for an individual teacher -->
 
 
 {% extends 'dance_site/base.html' %}
 {% block content %}
 
+<!-- style elements for this page -->
 <style>
     body {
       background-image: url('https://www.raquellesdance.com/img/background.jpg');
@@ -26,9 +28,10 @@
 <br>
 <div class="homepage">
 <br>
+<!-- a link to return to the all teachers list -->
 <p style="text-align:center;"> <a href ="{% url 'show_all_teachers'  %}" > Return to all Teachers </a> </p>
 
-
+<!-- display information about the teacher-->
 <table align="center">
     <tr>
         <td width="30%">
@@ -57,10 +60,9 @@
         </td>
 
 
-
-            <!-- display classes the student is taking -->
+         <!-- display classes taught by the teacher-->
         <td width="30%">  
-            <h2>Dance Classes Taught</h2>
+            <h2> Classes Taught</h2>
 
             <table align="center">
                 <tr>

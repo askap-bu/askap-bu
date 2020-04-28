@@ -1,3 +1,7 @@
+# File name: urls.py 
+# Author: Andriana Skaperdas (askap@bu.edu)
+# Description: Holds all the urls for /dance_site
+
 from django.urls import path
 from .views import * 
 urlpatterns = [
@@ -12,6 +16,5 @@ urlpatterns = [
     path('teacher/<int:pk>', TeacherPageView.as_view(), name='teacher'),
     path('student/<int:pk>/show_possible_classes', ShowPossibleClassesView.as_view(), name='show_possible_classes'),
     path('student/<int:student_pk>/add_class/<int:class_pk>', add_class, name='add_class'),
-
 
 ]

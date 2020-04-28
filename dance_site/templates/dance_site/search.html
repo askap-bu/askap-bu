@@ -1,4 +1,6 @@
-
+<!-- File name:templates/search.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page to display the results of the search query on the 'show_all_classes' page-->
 
 
 <style type="text/css">
@@ -18,6 +20,8 @@
     }
     
 </style>
+ 
+<!-- if there is a result, this will show the result -->
 
 {% if all_profiles_list %}
 <div class="container">
@@ -29,6 +33,8 @@
         </div>
     </div>
 </div>
+
+<!-- if there is no result, this will display a message tot he user -->
 
 {% else %}
 <div class="container">
@@ -47,5 +53,4 @@
 </div>
 
 {% endif %}
-
 

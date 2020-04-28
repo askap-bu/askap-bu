@@ -1,10 +1,12 @@
-<!-- templates/dance_site/student_page.html-->
-
+<!-- File name: templates/student_page.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page to show an individual students page, contains a link to update the student-->
 
 
 {% extends 'dance_site/base.html' %}
 {% block content %}
 
+<!-- style elements for this page-->
 <style>
     body {
       background-image: url('https://www.raquellesdance.com/img/background.jpg');
@@ -23,13 +25,16 @@
 <br>
 <br>
 <div class="homepage">
+
+<!-- a link to retun back to the all students page-->
 <p style="text-align:center;"> <a href ="{% url 'show_all_students'  %}" > Return to all students list </a> </p>
 
-<table>
+<!-- display all the student's info-->
+<table align="center">
     <tr>
         <td width="30%">
-            <table align="center">
-                <h2  align="center">Information</h2>
+            <table class="ind-pages">
+                <h2 >Information</h2>
                 <tr>
                     <th> Email</th>
                     <td>{{student.email_address}}</td>
@@ -45,16 +50,16 @@
             </table>
         </td>
         <td width="30%">
-            <h1 align="center">{{student.first_name}} {{student.last_name}}</h1> 
+            <h1 >{{student.first_name}} {{student.last_name}}</h1> 
             <br>
-
             <p style="text-align:center;"><img src="{{student.profile_image_url}}" style= "max-height:400 ;"></p>
             <p style="text-align:center;"><a href ="{% url 'update_student' student.pk %}" > Update this Student</a></p>
         </td>
         <td width="30%">
+
             <!-- display classes the student is taking -->
-            <h2  align="center">Dance Classes Entrolled In</h2>
-            <br>
+            <h2 > Classes Entrolled In</h2>
+           
             <table align="center">
                 <tr>
                     <th> Class Name</th>
@@ -63,8 +68,8 @@
                 
                 {% for class in student.get_classes %}
                     <tr>
-                        <td align="center">{{class.class_name}}</td>
-                        <td align="center">{{class.day}}</td>
+                        <td >{{class.class_name}}</td>
+                        <td >{{class.day}}</td>
                         <td>{% if status.image %}
                             <img src='{{class.class_picture.url}}' style='max-width: 200;'>
                             {% endif %}</td>

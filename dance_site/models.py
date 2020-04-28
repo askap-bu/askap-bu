@@ -1,4 +1,6 @@
-#models.py
+# File name: models.py 
+# Author: Andriana Skaperdas (askap@bu.edu)
+# Description: Holds all the data models for the dance site including Student, Class, and Teacher
 
 from django.db import models
 from django.urls import reverse
@@ -27,7 +29,7 @@ class Student(models.Model):
          
 
     def get_absolute_url(self):
-        '''return a url to display this profile object'''
+        '''return a url to display this student object'''
         return reverse('student', kwargs={"pk": self.pk })
 
 
@@ -74,7 +76,6 @@ class Student(models.Model):
 
 
         
-
 
 class Teacher(models.Model):
     '''holds the data attributes of a dance teacher'''

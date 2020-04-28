@@ -1,4 +1,6 @@
-<!-- /show_possible_classes.html -->
+<!-- File name: templates/show_all_possible.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page to show a listing of possible classes the student can enroll in which they arent already in-->
 
 {% extends 'dance_site/base.html' %}
 {% block content %}
@@ -11,6 +13,7 @@
 
 <hr>
 
+<!-- display all the suggestions in a table-->
 <table align="center">
     {% for suggestion in student.get_class_suggestions %}
         <tr>

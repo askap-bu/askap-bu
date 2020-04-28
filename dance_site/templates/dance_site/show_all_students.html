@@ -1,4 +1,6 @@
-<!-- show_all_students.html -->
+<!-- File name: templates/show_all_students.html
+    Author: Andriana Skaperdas (askap@bu.edu)
+    Description: A html page to show a listing of all the students-->
 
 {% extends 'dance_site/base.html' %}
 {% block content %}
@@ -8,6 +10,19 @@
 <br>
 <h1  align="center">Our Students</h1>
 
+<!-- display the students in columns -->
+
+{% load columns %}
+
+<div class="row">
+    {% for col in show_all_students.list_of_lists|columns:3 %}
+        <div class="col-md-4">
+            {% for item in col %}
+                <div class="item">{{ item }}</div>
+            {% endfor %}
+        </div><!-- /col-md-4 -->
+    {% endfor %}
+</div><!-- /row -->
 
 
 <table align="center" class="my-table">
@@ -25,4 +40,5 @@
     </tr> 
 {% endfor %}
 </table>
+
 {% endblock %}

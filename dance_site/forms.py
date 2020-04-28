@@ -1,4 +1,8 @@
-# dance_site/forms 
+# File name: forms.py 
+# Author: Andriana Skaperdas (askap@bu.edu)
+# Description: Holds the forms to create a class and update a student
+
+
 from django import forms
 from .models import Student, Class, Teacher
 
