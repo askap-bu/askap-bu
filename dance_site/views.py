@@ -116,6 +116,37 @@ class ShowAllStudentsView(ListView):
     context_object_name = 'show_all_students'
 
 
+
+# def AllStudentViewGrid(request):
+#     """view for a list of all classes"""
+#     context={}
+#     # query=""
+#     # if request.GET:
+#     #     query=request.GET['q']
+#     #     context['query']=str(query)
+#     people=Student.objects.all()
+#     show_all_students= lol(people,3)
+#     context['show_all_students'] = show_all_students
+#     return render(request, 'dance_site/show_all_student_grid.html', context)
+
+   
+
+# def lol(people, num_col):
+#     list_tot = []
+#     list_int = []
+#     count = 0
+#     for p in people:
+#         if len(list_int) < num_col:
+#             list_int.append(p)
+#             if len(list_int) == num_col:
+#                 list_tot.append(list_int)
+#                 list_int = []
+#             if people[count] == people[(len(people) - 1)]:# there are no more people, append
+#                 list_tot.append(list_int)
+#             count += 1
+#     return list_tot
+
+
 #Views related to Teacher
 class ShowAllTeachersView(ListView):
     """ create a subclass of listview to display all teachers"""
